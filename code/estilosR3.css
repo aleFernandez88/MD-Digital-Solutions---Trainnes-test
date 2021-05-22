@@ -4,42 +4,37 @@
   margin: 0;
 }
 
-.banner {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background: #000;
-  display: flex;
-
-  border: turquoise solid 2px;
-  color: aliceblue;
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
 .miniatura {
-  width: 500px;
-  height: 500px;
   background-image: url("./media/miniatura.JPG");
+
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border: solid #fff 2px;
+  grid-area: miniatura;
 }
 .text {
-  border: solid rgb(161, 59, 59) 2px;
-  padding-inline-start: 10%;
-  width: 500px;
-  height: 500px;
-  align-items: center;
-  justify-content: center;
+  padding-left: 15%;
+  padding-top: 15%;
+  padding-right: 15%;
+  grid-area: texto;
 }
+
+.banner {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+
+  color: aliceblue;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-auto-rows: 500px;
+  grid-template-areas: "miniatura texto";
+}
+
 .playButton {
   width: 60px;
   height: 60px;
@@ -48,29 +43,17 @@
   cursor: pointer;
 }
 
-.banner .content h2 {
+.banner h2 {
   color: #fff;
   font-weight: 500;
   font-size: 2em;
 }
 
-.banner .content p {
+.banner p {
   font-size: 1.2em;
   color: #fff;
   font-weight: 300;
   margin: 15px 0px 25px;
-}
-
-.banner .content a {
-  position: relative;
-  text-transform: uppercase;
-  background: #fff;
-  color: #111;
-  font-weight: 500;
-  letter-spacing: 2px;
-  text-decoration: none;
-  display: inline-block;
-  padding: 10px 15px;
 }
 
 .trailer {
@@ -100,9 +83,18 @@
   outline: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
+  .banner {
+    grid-template-rows: 20% auto;
+    grid-template-areas:
+      "miniatura"
+      "texto";
+  }
   .trailer video {
     max-width: 90%;
+  }
+  .miniatura {
+    height: 200px;
   }
 }
 .close {
